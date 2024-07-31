@@ -29,11 +29,11 @@ public class MyUser {
     @NotBlank(message = "{NotBlank.user.lastName}")
     @Column(nullable = false)
     private String lastName;
-    @NotBlank(message = "{NotBlank.user.email}")
     @Email
     @Column(nullable = false, unique = true)
+    @NotBlank(message = "{NotBlank.user.email}")
     private String email;
-    @NotBlank(message = "{NoteBlank.user.password}")
+    @NotBlank(message = "{NotBlank.user.password}")
     @Column(nullable = false)
     private String password;
     @NotBlank(message = "{NotBlank.user.phone}")
