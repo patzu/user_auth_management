@@ -26,6 +26,16 @@ public class GlobalExceptionHandling {
         return new ResponseEntity<>(validationErrorDto, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
+    @ExceptionHandler(CustomServiceException.class)
+    public ResponseEntity<ErrorDetail> handleCustomServiceException(CustomServiceException e) {
+
+        ErrorDetail errorDetail = ErrorDetail.builder()
+                .timeStamp(new Date())
+                .message(e.getMessage())
+                .detail(e.getCause() != null ? e.getCause().toString() : "No Additional Detail!").build();
+        return new ResponseEntity<>(errorDetail, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetail> handleGlobalExceptions(Exception e, WebRequest webRequest) {
         ErrorDetail errorDetail = new ErrorDetail(new Date(), e.getMessage(), webRequest

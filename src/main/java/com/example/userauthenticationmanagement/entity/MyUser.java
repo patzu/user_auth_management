@@ -29,7 +29,7 @@ public class MyUser {
     @NotBlank(message = "{NotBlank.user.lastName}")
     @Column(nullable = false)
     private String lastName;
-    @Email
+    @Email(message = "{Email.user.valid}")
     @Column(nullable = false, unique = true)
     @NotBlank(message = "{NotBlank.user.email}")
     private String email;
